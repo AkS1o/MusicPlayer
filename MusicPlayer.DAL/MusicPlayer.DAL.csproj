@@ -56,11 +56,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="EF\Initializer.cs" />
     <Compile Include="EF\MusicPlayerDbContext.cs" />
+    <Compile Include="Entities\Album.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
-    <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
