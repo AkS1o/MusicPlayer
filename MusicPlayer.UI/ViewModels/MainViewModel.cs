@@ -19,8 +19,19 @@ namespace MusicPlayer.UI.ViewModels
         {
             select_dir_for_scan = new DelegateCommand(Select_directory_for_scan_music);
         }
-        
 
+        private void Skan(string sourceDir)
+        {
+            Task.Run(() =>
+            {
+                string[] picList = Directory.GetFiles(sourceDir, "*.mp3");
+                foreach (string f in picList)
+                {
+                    string fName = f.Substring(sourceDir.Length + 1);
+                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine("D:\\Music_for_project", fName), true);
+                }
+            });
+        }
         void Select_directory_for_scan_music()
         {
             string sourceDir = null;
@@ -31,6 +42,8 @@ namespace MusicPlayer.UI.ViewModels
             {
                 sourceDir = dialog.FileName;
             }
+            if (sourceDir != null)
+                Skan(sourceDir);
         }
 
         
