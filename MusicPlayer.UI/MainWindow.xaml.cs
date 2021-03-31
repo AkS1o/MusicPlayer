@@ -1,4 +1,5 @@
 ﻿using System;
+using MusicPlayer.UI.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace MusicPlayer.UI
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
