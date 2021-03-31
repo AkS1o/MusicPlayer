@@ -68,10 +68,10 @@
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Сategory.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
