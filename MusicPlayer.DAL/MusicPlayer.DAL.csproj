@@ -61,6 +61,7 @@
     <Compile Include="Entities\Playlist.cs" />
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Сategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
