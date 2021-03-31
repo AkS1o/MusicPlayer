@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicPlayer.DAL.Entities
+namespace MusicPlayer.BLL.DTO
 {
-    public class Track
+    public class TrackDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,9 +15,9 @@ namespace MusicPlayer.DAL.Entities
         public string Duration { get; set; }
         public int NumberOfAuditions { get; set; }
 
-        public virtual Artist Artist { get; set; }
-        public virtual Album Album { get; set; }
-        public virtual ICollection<Playlist> Playlists { get; set; }
-        public virtual ICollection<Сategory> Categories { get; set; }
+        public ArtistDTO Artist { get; set; }
+        public AlbumDTO Album { get; set; }
+        public ICollection<PlaylistDTO> Playlists { get; set; }
+        public ICollection<СategoryDTO> Categories { get; set; }
     }
 }
