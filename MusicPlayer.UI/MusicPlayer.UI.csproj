@@ -79,7 +79,7 @@
     <Compile Include="ViewModels\TrackViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\WorkWithAudoiFilesViewModel.cs" />
+    <Compile Include="ViewModels\WorkWithAudioContentViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
