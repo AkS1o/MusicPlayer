@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Configurations\AlbumConfig.cs" />
     <Compile Include="EF\Initializer.cs" />
     <Compile Include="EF\MusicPlayerDbContext.cs" />
     <Compile Include="Entities\Album.cs" />
@@ -65,7 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Configurations\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
