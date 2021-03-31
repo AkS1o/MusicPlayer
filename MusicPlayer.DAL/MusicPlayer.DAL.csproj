@@ -56,6 +56,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Configurations\AlbumConfig.cs" />
     <Compile Include="Configurations\ArtistConfig.cs" />
+    <Compile Include="Configurations\CategoryConfig.cs" />
     <Compile Include="EF\Initializer.cs" />
     <Compile Include="EF\MusicPlayerDbContext.cs" />
     <Compile Include="Entities\Album.cs" />
