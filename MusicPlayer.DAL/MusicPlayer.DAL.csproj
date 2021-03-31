@@ -59,6 +59,7 @@
     <Compile Include="Configurations\CategoryConfig.cs" />
     <Compile Include="Configurations\PlaylistConfig.cs" />
     <Compile Include="Configurations\TrackConfig.cs" />
+    <Compile Include="Configurations\UserConfig.cs" />
     <Compile Include="EF\Initializer.cs" />
     <Compile Include="EF\MusicPlayerDbContext.cs" />
     <Compile Include="Entities\Album.cs" />
