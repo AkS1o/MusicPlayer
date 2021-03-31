@@ -15,6 +15,7 @@ namespace MusicPlayer.DAL.EF
         public MusicPlayerDbContext()
             : base("name=MusicPlayerDbContext")
         {
+            Database.SetInitializer(new Initializer());
         }
 
         // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
