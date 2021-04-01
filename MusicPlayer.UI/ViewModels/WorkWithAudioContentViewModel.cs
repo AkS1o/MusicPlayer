@@ -38,9 +38,6 @@ namespace MusicPlayer.UI.ViewModels
 
             //LoadAllArtists();
             //LoadAllCategorys();
-            //if (artists == null)
-            //    MessageBox.Show("ok");
-            //loadBooksCmd = new DelegateCommand(LoadAllBooks);
         }
         public void LoadAllArtists()
         {
@@ -111,10 +108,24 @@ namespace MusicPlayer.UI.ViewModels
             var duration = (int)f.Properties.Duration.TotalSeconds;
             var ts = TimeSpan.FromSeconds(duration);
 
+            //int? categoryId = null;
+            //foreach (var item in categorys)
+            //{
+            //    if (item.Name == genres)
+            //        categoryId = item.Id;
+            //}
+
+            //int? artistId = null;
+            //foreach (var item in artists)
+            //{
+            //    if (item.Name == artist)
+            //        artistId = item.Id;
+            //}
 
             TrackDTO trackDTO = new TrackDTO();
             trackDTO.Duration = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds).ToString();
             trackDTO.Name = title;
+            //trackDTO.ArtistId = artistId;
             //trackDTO.Artist = new ArtistDTO(){Name = artist};
             //trackDTO.Album = new AlbumDTO() { Name = album };
             //trackDTO.Categories.Add(new СategoryDTO() {Name = genres });
