@@ -36,8 +36,8 @@ namespace MusicPlayer.UI.ViewModels
             });
             mapper = new Mapper(config);
 
-            LoadAllArtists();
-            LoadAllCategorys();
+            //LoadAllArtists();
+            //LoadAllCategorys();
             //if (artists == null)
             //    MessageBox.Show("ok");
             //loadBooksCmd = new DelegateCommand(LoadAllBooks);
