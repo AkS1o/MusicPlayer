@@ -14,10 +14,12 @@ namespace MusicPlayer.DAL.Entities
         public int? AlbumId { get; set; }
         public string Duration { get; set; }
         public int? NumberOfAuditions { get; set; }
+        public int? CategoryId { get; set; }
 
         public virtual Artist Artist { get; set; }
         public virtual Album Album { get; set; }
+        public virtual Сategory Categories { get; set; }
         public virtual ICollection<Playlist> Playlists { get; set; }
-        public virtual ICollection<Сategory> Categories { get; set; }
+        
     }
 }

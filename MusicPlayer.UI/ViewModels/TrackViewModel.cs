@@ -14,6 +14,7 @@ namespace MusicPlayer.UI.ViewModels
         private string categoryName;
         private ArtistViewModel artist;
         private AlbumViewModel album;
+        private CategoryViewModel category;
 
         public int Id { get; set; }
 
@@ -24,5 +25,6 @@ namespace MusicPlayer.UI.ViewModels
 
         public ArtistViewModel Artist { get => artist; set => SetProperty(ref artist, value); }
         public AlbumViewModel Album { get => album; set => SetProperty(ref album, value); }
+        public CategoryViewModel Category { get => category; set => SetProperty(ref category, value); }
     }
 }
