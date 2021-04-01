@@ -32,6 +32,8 @@ namespace MusicPlayer.UI.ViewModels
                 OnPropertyChanged(nameof(FullName));
             }
         }
+
+        public string Country {get => country; set => SetProperty(ref country, value);}
         public string FullName => $"{Name} {Surname}";
         
     }
