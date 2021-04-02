@@ -6,23 +6,34 @@
         xmlns:local="clr-namespace:MusicPlayer.UI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
 
-        <Button Grid.Column="3" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
+		<Button Grid.Column="3" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
 
-        <ListBox></ListBox>
-
-    </Grid>
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="4" ItemsSource="{Binding Tracks}" SelectedItem="{Binding SelectedTrack, Mode=OneWayToSource}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel LastChildFill="False">
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding CategoryName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Load tracks" Grid.Column="4" Grid.Row="5" Command="{Binding LoadTracksCmd}"> </Button>
+	</Grid>
 </Window>

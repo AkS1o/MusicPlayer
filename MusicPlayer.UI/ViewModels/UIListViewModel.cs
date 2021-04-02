@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using MusicPlayer.BLL.DTO;
 using MusicPlayer.BLL.Interface;
 using MusicPlayer.BLL.Service;
@@ -7,7 +6,6 @@ using MusicPlayer.UI.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +13,15 @@ using System.Windows.Input;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+   public class UIListViewModel : ViewModelBase
     {
-        WorkWithAudoiFilesViewModel workWithAudoiFilesViewModel = new WorkWithAudoiFilesViewModel();
-        public ICommand Select_dir_for_scan => select_dir_for_scan;
-        private Command select_dir_for_scan;
-        private Command loadTracksCmd;
-        //private UIListViewModel uilistViewModel = new UIListViewModel();
+        private ITrackService trackService = new TrackService ();
+        private IMapper mapper;
 
-        public ICommand LoadTracksCmd => loadTracksCmd;
-        public MainViewModel()
+        private ICollection<TrackViewModel> tracks = new ObservableCollection<TrackViewModel>();
+        private TrackViewModel selectedTrack;
+        
+        public UIListViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(cfg =>
             {
@@ -38,17 +35,7 @@ namespace MusicPlayer.UI.ViewModels
             });
             mapper = new Mapper(config);
 
-            loadTracksCmd = new DelegateCommand(LoadAllTracks);
-            select_dir_for_scan = new DelegateCommand(workWithAudoiFilesViewModel.Select_directory_for_scan_music);
         }
-
-        private ITrackService trackService = new TrackService();
-        private IMapper mapper;
-
-        private ICollection<TrackViewModel> tracks = new ObservableCollection<TrackViewModel>();
-        private TrackViewModel selectedTrack;
-
-       
 
         public void LoadAllTracks()
         {
@@ -68,5 +55,6 @@ namespace MusicPlayer.UI.ViewModels
             get { return selectedTrack; }
             set { SetProperty(ref selectedTrack, value); }
         }
+
     }
 }

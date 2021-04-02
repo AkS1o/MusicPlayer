@@ -36,7 +36,7 @@ namespace MusicPlayer.BLL.Service
         // Public Service Interface
         public IEnumerable<TrackDTO> GetAllTracks()
         {
-            var result = repositories.TrackRepos.Get(includeProperties: $"{nameof(Track.Artist)}, {nameof(Track.Album)}");
+            var result = repositories.TrackRepos.Get(includeProperties: $"{nameof(Track.Artist)}, {nameof(Track.Album)}, {nameof(Track.Categories)}");
             return mapper.Map<IEnumerable<TrackDTO>>(result);
         }
 
