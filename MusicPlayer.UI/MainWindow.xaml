@@ -23,7 +23,7 @@
 
 		<Button Grid.Column="3" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
 
-        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="4" ItemsSource="{Binding Tracks}" SelectedItem="{Binding SelectedTrack, Mode=OneWayToSource}">
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding uilistViewModel.SelectedTrack, Mode=OneWayToSource}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="False">
