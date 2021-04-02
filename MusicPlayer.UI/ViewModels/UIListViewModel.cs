@@ -20,7 +20,7 @@ namespace MusicPlayer.UI.ViewModels
 
         private ICollection<TrackViewModel> tracks = new ObservableCollection<TrackViewModel>();
         private TrackViewModel selectedTrack;
-
+        
         public UIListViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(cfg =>
