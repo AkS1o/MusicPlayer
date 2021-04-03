@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MusicPlayer.UI
         public PageRegistration()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
