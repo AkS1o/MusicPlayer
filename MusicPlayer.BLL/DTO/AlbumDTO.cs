@@ -15,7 +15,7 @@ namespace MusicPlayer.BLL.DTO
         public int ArtistId { get; set; }
 
         public ArtistDTO Artist { get; set; }
-        public ICollection<TrackDTO> Tracks { get; set; }
 
+        public ICollection<TrackDTO> Tracks { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace MusicPlayer.BLL.DTO
         public string Name { get; set; }
         public int UserId { get; set; }
 
-        public User User { get; set; }
-        public ICollection<Track> Tracks { get; set; }
+        public UserDTO User { get; set; }
+        public ICollection<TrackDTO> Tracks { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace MusicPlayer.BLL.DTO
         public string Name { get; set; }
         public string Suname { get; set; }
         public string Country { get; set; }
+
         public ICollection<AlbumDTO> Albums { get; set; }
         public ICollection<TrackDTO> Tracks { get; set; }
     }
