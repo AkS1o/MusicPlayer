@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ModelBase : INotifyPropertyChanged
     {
         /// <summary>
         /// Multicast event for property change notifications.

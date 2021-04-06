@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class CategoryViewModel : ViewModelBase
+    public class CategoryModel : ModelBase
     {
-        public int Id { get; set; }
         public string name;
+
+        public int Id { get; set; }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
     }

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class UserViewModel : ViewModelBase
+    public class UserModel : ModelBase
     {
-        public int Id { get; set; }
         private string name;
         private string password;
         private string email;
         private string picture;
         private string wayToSongs;
+
+        public int Id { get; set; }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
         public string Password { get => password; set => SetProperty(ref password, value); }

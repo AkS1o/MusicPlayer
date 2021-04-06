@@ -95,17 +95,17 @@
     <Compile Include="PageRegistration.xaml.cs">
       <DependentUpon>PageRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AlbumViewModel.cs" />
-    <Compile Include="ViewModels\ArtistViewModel.cs" />
+    <Compile Include="Model\AlbumModel.cs" />
+    <Compile Include="Model\ArtistModel.cs" />
     <Compile Include="ViewModels\AutorizationViewModel.cs" />
-    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\PlaylistViewModel.cs" />
+    <Compile Include="Model\PlaylistModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
-    <Compile Include="ViewModels\TrackViewModel.cs" />
+    <Compile Include="Model\TrackModel.cs" />
     <Compile Include="ViewModels\UIListViewModel.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\ModelBase.cs" />
     <Compile Include="ViewModels\WorkWithAudioContentViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

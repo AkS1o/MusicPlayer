@@ -15,17 +15,17 @@ using System.Windows.Media;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class AutorizationViewModel : ViewModelBase
+    public class AutorizationViewModel : ModelBase
     {
         private IUserService userService = new UserService();
-        private ICollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
+        private ICollection<UserModel> users = new ObservableCollection<UserModel>();
         private IMapper mapper;
         public AutorizationViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<UserDTO, UserViewModel>();
-                cfg.CreateMap<UserViewModel, UserDTO>();
+                cfg.CreateMap<UserDTO, UserModel>();
+                cfg.CreateMap<UserModel, UserDTO>();
             });
             mapper = new Mapper(config);
             LoadAllUsers();
@@ -33,7 +33,7 @@ namespace MusicPlayer.UI.ViewModels
 
         public void LoadAllUsers()
         {
-            var result = mapper.Map<IEnumerable<UserViewModel>>(userService.GetAllUsers());
+            var result = mapper.Map<IEnumerable<UserModel>>(userService.GetAllUsers());
 
             users.Clear();
             foreach (var b in result)
