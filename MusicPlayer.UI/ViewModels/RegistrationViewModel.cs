@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -54,6 +55,11 @@ namespace MusicPlayer.UI.ViewModels
             LoginFrame = new PageRegistration();
         }
 
+
+        public void OpenTheAutorizationWindow()
+        {
+            LoginFrame = new PageAutorization();
+        }
 
         private string picture = "\\Assets\\NoPhoto.png";
         public string Picture { get => picture; set => SetProperty(ref picture, value); }
@@ -180,6 +186,10 @@ namespace MusicPlayer.UI.ViewModels
                 borderpasword.BorderBrush = Brushes.Red;
                 check = true;
             }
+            else
+            {
+                UserDTO.Password = Sha256encrypt(UserDTO.Password);
+            }
             if (ExistenceUserInDatabase())
             {
                 borderEmail.BorderBrush = Brushes.Red;
@@ -188,9 +198,17 @@ namespace MusicPlayer.UI.ViewModels
             return check;
         }
 
-        public void СreatingAUser()
+        public static string Sha256encrypt(string phrase)
         {
-            if (DataValidation()) { return; }
+            UTF8Encoding encoder = new UTF8Encoding();
+            SHA256Managed sha256hasher = new SHA256Managed();
+            byte[] hashedDataBytes = sha256hasher.ComputeHash(encoder.GetBytes(phrase));
+            return Convert.ToBase64String(hashedDataBytes);
+        }
+
+        public void СreatingAUser()
+        {        
+            if (DataValidation()) { return; }        
             userService.CreateNewUser(userDTO);
             MessageBox.Show("user create");
         }

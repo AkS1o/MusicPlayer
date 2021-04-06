@@ -23,6 +23,7 @@ namespace MusicPlayer.UI.ViewModels
         private Command loadTracksCmd;
         public UIListViewModel uilistViewModel { get; } = new UIListViewModel();
         public RegistrationViewModel registrationViewModel { get; } = new RegistrationViewModel();
+        public AutorizationViewModel autorizationViewModel { get; } = new AutorizationViewModel();
 
         public ICommand LoadTracksCmd => loadTracksCmd;
 
@@ -38,6 +39,12 @@ namespace MusicPlayer.UI.ViewModels
         private Command addUserCommand;
         public ICommand AddUserCommand => addUserCommand;
 
+        private Command openTheAutorizationWindow;
+        public ICommand OpenTheAutorizationWindow => openTheAutorizationWindow;
+       
+        private Command loginUserCommand;
+        public ICommand LoginUserCommand => loginUserCommand;
+
         public MainViewModel()
         {
             
@@ -47,6 +54,8 @@ namespace MusicPlayer.UI.ViewModels
             wayToPictureCommand = new DelegateCommand(registrationViewModel.SelectDirectoryForwayToPicture);
             wayToMusicCommand = new DelegateCommand(registrationViewModel.SelectDirectoryForWayToMusic);
             addUserCommand = new DelegateCommand(registrationViewModel.СreatingAUser);
+            openTheAutorizationWindow = new DelegateCommand(registrationViewModel.OpenTheAutorizationWindow);
+            loginUserCommand = new DelegateCommand(autorizationViewModel.LoginUser);
         }
 
       
