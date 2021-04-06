@@ -35,7 +35,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -63,8 +63,8 @@
                     <ColumnDefinition Width="150"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Username" ></TextBlock>
-                <TextBox x:Name="TextName"  Grid.Column="1" ></TextBox>
+                <TextBlock Grid.Column="0" Text="Email" ></TextBlock>
+                <TextBox BorderBrush="{Binding Path=autorizationViewModel.BorderEmail.BorderBrush,Mode=TwoWay}" Text="{Binding Path=autorizationViewModel.UserDTO.Email,Mode=OneWayToSource}" Grid.Column="1" VerticalContentAlignment="Center" ></TextBox>
                 <iconPacks:PackIconMaterial Grid.Column="2" Kind="Account" Foreground="White"  HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="5"/>
 
             </Grid>
@@ -77,7 +77,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock   Grid.Column="0" Text="Password"></TextBlock>
-                <PasswordBox  Grid.Column="1" ></PasswordBox>
+                <TextBox BorderBrush="{Binding Path=autorizationViewModel.Borderpasword.BorderBrush,Mode=TwoWay}"  Text="{Binding Path=autorizationViewModel.UserDTO.Password,Mode=OneWayToSource}"   Grid.Column="1" VerticalContentAlignment="Center" ></TextBox>
                 <iconPacks:PackIconMaterial Grid.Column="2" Kind="FormTextboxPassword" Foreground="White"  HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="5"/>
             </Grid>
 
@@ -87,10 +87,8 @@
                     <ColumnDefinition ></ColumnDefinition>
                     <ColumnDefinition ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button  Grid.Column="1" Width="110" Content="Login" Margin="20"></Button>
+                <Button  Command="{Binding LoginUserCommand}" Grid.Column="1" Width="110" Content="Login" Margin="20"></Button>
             </Grid>
-
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="I don't have an account" Background="{x:Null}" BorderBrush="{x:Null}"  ></Button>
         </StackPanel>
     </Grid>
 </Page>
