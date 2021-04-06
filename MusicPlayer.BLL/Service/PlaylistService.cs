@@ -24,9 +24,11 @@ namespace MusicPlayer.BLL.Service
                 cfg =>
                 {
                     // Entity to DTO
+                    cfg.CreateMap<User, UserDTO>();
                     cfg.CreateMap<Playlist, PlaylistDTO>();
 
                     // DTO to Entity
+                    cfg.CreateMap<UserDTO, User>();
                     cfg.CreateMap<PlaylistDTO, Playlist>();
                 });
 

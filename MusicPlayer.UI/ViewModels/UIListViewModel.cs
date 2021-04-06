@@ -13,25 +13,27 @@ using System.Windows.Input;
 
 namespace MusicPlayer.UI.ViewModels
 {
-   public class UIListViewModel : ViewModelBase
+   public class UIListViewModel : ModelBase
     {
         private ITrackService trackService = new TrackService ();
         private IMapper mapper;
 
-        private ICollection<TrackViewModel> tracks = new ObservableCollection<TrackViewModel>();
-        private TrackViewModel selectedTrack;
+        private ICollection<TrackModel> tracks = new ObservableCollection<TrackModel>();
+        private TrackModel selectedTrack;
         
         public UIListViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<ArtistDTO, ArtistViewModel>();
-                cfg.CreateMap<TrackDTO, TrackViewModel>();
-                cfg.CreateMap<СategoryDTO, CategoryViewModel>();
+                cfg.CreateMap<AlbumDTO, AlbumModel>();
+                cfg.CreateMap<ArtistDTO, ArtistModel>();
+                cfg.CreateMap<СategoryDTO, CategoryModel>();
+                cfg.CreateMap<TrackDTO, TrackModel>();
 
-                cfg.CreateMap<ArtistViewModel, ArtistDTO>();
-                cfg.CreateMap<TrackViewModel, TrackDTO>();
-                cfg.CreateMap<CategoryViewModel, СategoryDTO>();
+                cfg.CreateMap<AlbumModel, AlbumDTO>();
+                cfg.CreateMap<ArtistModel, ArtistDTO>();
+                cfg.CreateMap<CategoryModel, СategoryDTO>();
+                cfg.CreateMap<TrackModel, TrackDTO>();
             });
             mapper = new Mapper(config);
 
@@ -39,7 +41,7 @@ namespace MusicPlayer.UI.ViewModels
 
         public void LoadAllTracks()
         {
-            var result = mapper.Map<IEnumerable<TrackViewModel>>(trackService.GetAllTracks());
+            var result = mapper.Map<IEnumerable<TrackModel>>(trackService.GetAllTracks());
 
             tracks.Clear();
             foreach (var b in result)
@@ -49,8 +51,8 @@ namespace MusicPlayer.UI.ViewModels
         }
 
         // Binding Properties
-        public IEnumerable<TrackViewModel> Tracks => tracks;
-        public TrackViewModel SelectedTrack
+        public IEnumerable<TrackModel> Tracks => tracks;
+        public TrackModel SelectedTrack
         {
             get { return selectedTrack; }
             set { SetProperty(ref selectedTrack, value); }

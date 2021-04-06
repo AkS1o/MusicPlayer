@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ModelBase
     {
         WorkWithAudoiFilesViewModel workWithAudoiFilesViewModel = new WorkWithAudoiFilesViewModel();    
         public ICommand Select_dir_for_scan => select_dir_for_scan;

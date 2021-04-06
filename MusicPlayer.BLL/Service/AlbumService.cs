@@ -23,11 +23,13 @@ namespace MusicPlayer.BLL.Service
             IConfigurationProvider config = new MapperConfiguration(
                 cfg =>
                 {
-                        // Entity to DTO
-                        cfg.CreateMap<Album, AlbumDTO>();
+                    // Entity to DTO
+                    cfg.CreateMap<Artist, ArtistDTO>();
+                    cfg.CreateMap<Album, AlbumDTO>();
 
-                        // DTO to Entity
-                        cfg.CreateMap<AlbumDTO, Album>();
+                    // DTO to Entity
+                    cfg.CreateMap<ArtistDTO, Artist>();
+                    cfg.CreateMap<AlbumDTO, Album>();
                 });
 
             mapper = new Mapper(config);

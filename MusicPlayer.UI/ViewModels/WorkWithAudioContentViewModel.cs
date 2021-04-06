@@ -14,25 +14,25 @@ using System.Windows;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class WorkWithAudoiFilesViewModel : ViewModelBase
+    public class WorkWithAudoiFilesViewModel : ModelBase
     {
         private ITrackService trackService = new TrackService();
         private IСategoryService сategoryService = new СategoryService();
-        private ICollection<CategoryViewModel> categorys = new ObservableCollection<CategoryViewModel>();
+        private ICollection<CategoryModel> categorys = new ObservableCollection<CategoryModel>();
         private IArtistService artistService = new ArtistService();
-        private ICollection<ArtistViewModel> artists = new ObservableCollection<ArtistViewModel>();
+        private ICollection<ArtistModel> artists = new ObservableCollection<ArtistModel>();
         private IMapper mapper;
         public WorkWithAudoiFilesViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<ArtistDTO, ArtistViewModel>();
-                cfg.CreateMap<TrackDTO, TrackViewModel>();
-                cfg.CreateMap<СategoryDTO, CategoryViewModel>();
+                cfg.CreateMap<ArtistDTO, ArtistModel>();
+                cfg.CreateMap<TrackDTO, TrackModel>();
+                cfg.CreateMap<СategoryDTO, CategoryModel>();
 
-                cfg.CreateMap<ArtistViewModel, ArtistDTO>();
-                cfg.CreateMap<TrackViewModel, TrackDTO>();
-                cfg.CreateMap<CategoryViewModel, СategoryDTO>();
+                cfg.CreateMap<ArtistModel, ArtistDTO>();
+                cfg.CreateMap<TrackModel, TrackDTO>();
+                cfg.CreateMap<CategoryModel, СategoryDTO>();
             });
             mapper = new Mapper(config);
 
@@ -41,7 +41,7 @@ namespace MusicPlayer.UI.ViewModels
         }
         public void LoadAllArtists()
         {
-            var result = mapper.Map<IEnumerable<ArtistViewModel>>(artistService.GetAllArtists());
+            var result = mapper.Map<IEnumerable<ArtistModel>>(artistService.GetAllArtists());
 
             artists.Clear();
             foreach (var b in result)
@@ -52,7 +52,7 @@ namespace MusicPlayer.UI.ViewModels
 
         public void LoadAllCategorys()
         {
-            var result = mapper.Map<IEnumerable<CategoryViewModel>>(сategoryService.GetAllСategorys());
+            var result = mapper.Map<IEnumerable<CategoryModel>>(сategoryService.GetAllСategorys());
 
             categorys.Clear();
             foreach (var b in result)

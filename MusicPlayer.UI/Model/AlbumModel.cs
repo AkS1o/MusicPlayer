@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class AlbumViewModel : ViewModelBase
+    public class AlbumModel : ModelBase
     {
-        public int Id { get; set; }
         private string name;
         private string picture;
-        private int artistId;
-        private ArtistViewModel artist;
+        private ArtistModel artist;
+
+        public int Id { get; set; }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
         public string Picture { get => picture; set => SetProperty(ref picture, value); }
-        public int ArtistId { get => artistId; set => SetProperty(ref artistId, value); }
-
-        public ArtistViewModel Artist { get => artist; set => SetProperty(ref artist, value); }
+        public ArtistModel Artist { get => artist; set => SetProperty(ref artist, value); }
     }
 }

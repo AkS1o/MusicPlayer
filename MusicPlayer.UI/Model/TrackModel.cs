@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.UI.ViewModels
 {
-    public class TrackViewModel : ViewModelBase
+    public class TrackModel : ModelBase
     {
         private string name;
         private string duration;
         private int numberOfAuditions;
         private string categoryName;
-        private ArtistViewModel artist;
-        private AlbumViewModel album;
-        private CategoryViewModel category;
+        private ArtistModel artist;
+        private AlbumModel album;
+        private CategoryModel category;
 
         public int Id { get; set; }
 
@@ -23,8 +23,8 @@ namespace MusicPlayer.UI.ViewModels
         public int NumberOfAuditions { get => numberOfAuditions; set => SetProperty(ref numberOfAuditions, value); }
         public string CategoryName { get => categoryName; set => SetProperty(ref categoryName, value); }
 
-        public ArtistViewModel Artist { get => artist; set => SetProperty(ref artist, value); }
-        public AlbumViewModel Album { get => album; set => SetProperty(ref album, value); }
-        public CategoryViewModel Category { get => category; set => SetProperty(ref category, value); }
+        public ArtistModel Artist { get => artist; set => SetProperty(ref artist, value); }
+        public AlbumModel Album { get => album; set => SetProperty(ref album, value); }
+        public CategoryModel Category { get => category; set => SetProperty(ref category, value); }
     }
 }
