@@ -18,7 +18,7 @@ namespace MusicPlayer.DAL.Entities
 
         public virtual Artist Artist { get; set; }
         public virtual Album Album { get; set; }
-        public virtual Сategory Categories { get; set; }
+        public virtual Сategory Category { get; set; }
         public virtual ICollection<Playlist> Playlists { get; set; }
         
     }
