@@ -36,7 +36,7 @@
                                 <ContextMenu>
                                     <MenuItem Header="Menu item 1" />
                                     <MenuItem Header="Menu item 2" />
-                                    <MenuItem Header="Menu item 3" />
+                                    <MenuItem Header="Menu item 3 " />
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
