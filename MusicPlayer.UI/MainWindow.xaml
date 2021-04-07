@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicPlayer.UI"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="1000" Width="1200" MinHeight="1000" MinWidth="1200">
+        Title="MainWindow"  Height="800" Width="1200">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition></RowDefinition>
@@ -33,7 +33,16 @@
                     <DockPanel LastChildFill="False">
                         <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
                         <TextBlock Text="{Binding CategoryName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                        <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Duration}"  Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <Button Content="..." FontSize="18" DockPanel.Dock="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <Button Content="Menu item 1" />
+                                    <Button Content="Menu item 2" />
+                                    <Button Content="Menu item 3 " />
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
