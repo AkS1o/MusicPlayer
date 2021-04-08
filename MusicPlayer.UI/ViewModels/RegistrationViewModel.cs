@@ -47,18 +47,22 @@ namespace MusicPlayer.UI.ViewModels
             }
         }
 
-        private Page loginFrame;
-        public Page LoginFrame { get => loginFrame; set => SetProperty(ref loginFrame, value); }
+        private Frame loginFrame = new Frame();
+        public Frame LoginFrame { get => loginFrame; set => SetProperty(ref loginFrame, value); }
 
         public void OpenTheRegistrationWindow()
         {
-            LoginFrame = new PageRegistration();
+            while (loginFrame.NavigationService.RemoveBackEntry() != null) ;
+            loginFrame.Content = null;
+            loginFrame.NavigationService.Navigate(new PageRegistration());
         }
-
 
         public void OpenTheAutorizationWindow()
         {
-            LoginFrame = new PageAutorization();
+            while (loginFrame.NavigationService.RemoveBackEntry() != null) ;
+            loginFrame.Content = null;
+            loginFrame.NavigationService.Navigate(new PageAutorization());
+
         }
 
         private string picture = "\\Assets\\NoPhoto.png";

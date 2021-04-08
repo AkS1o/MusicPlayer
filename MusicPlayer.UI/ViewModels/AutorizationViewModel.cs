@@ -114,7 +114,8 @@ namespace MusicPlayer.UI.ViewModels
         public void LoginUser()
         {
             if (DataValidation()) { return; }
-            MessageBox.Show("user logon");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }
