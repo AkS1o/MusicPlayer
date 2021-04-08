@@ -27,7 +27,7 @@ namespace MusicPlayer.UI.ViewModels
                 MusicName = selectedTrack.Name;
                 if (selectedTrack != null && Isplayingmusic != selectedTrack.Name)
                 {              
-                    mediaElement.Source = new Uri($"C:\\Users\\Kolotyuk\\Desktop\\song\\{selectedTrack.Name}.mp3", UriKind.Absolute);
+                    mediaElement.Source = new Uri($"D:\\Music_for_project\\{selectedTrack.Name}.mp3", UriKind.Absolute);
                     Isplayingmusic = selectedTrack.Name;
                 }
                 mediaElement.LoadedBehavior = MediaState.Play;
