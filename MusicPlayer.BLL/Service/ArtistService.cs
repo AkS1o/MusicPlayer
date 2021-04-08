@@ -27,11 +27,13 @@ namespace MusicPlayer.BLL.Service
                     cfg.CreateMap<Artist, ArtistDTO>();
                     cfg.CreateMap<Track, TrackDTO>();
                     cfg.CreateMap<Album, AlbumDTO>();
+                    cfg.CreateMap<Сategory, СategoryDTO>();
 
                     // DTO to Entity
                     cfg.CreateMap<ArtistDTO, Artist>();
                     cfg.CreateMap<TrackDTO, Track>();
                     cfg.CreateMap<AlbumDTO, Album>();
+                    cfg.CreateMap<СategoryDTO, Сategory>();
                 });
 
             mapper = new Mapper(config);

@@ -53,7 +53,7 @@ namespace MusicPlayer.UI.ViewModels
         // Binding Properties
         public IEnumerable<TrackModel> Tracks => tracks;
         public TrackModel SelectedTrack
-        {
+        {     
             get { return selectedTrack; }
             set { SetProperty(ref selectedTrack, value); }
         }
