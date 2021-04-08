@@ -101,6 +101,7 @@
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Model\PlaylistModel.cs" />
+    <Compile Include="ViewModels\PlayingMusicModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Model\TrackModel.cs" />
     <Compile Include="ViewModels\UIListViewModel.cs" />

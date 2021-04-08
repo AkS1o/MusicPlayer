@@ -39,10 +39,7 @@ namespace MusicPlayer.UI.ViewModels
                 cfg.CreateMap<AlbumModel, AlbumDTO>();
             });
             mapper = new Mapper(config);
-
-            LoadAllArtists();
-            LoadAllCategorys();
-            LoadAllAlboms();
+     
         }
         public void LoadAllArtists()
         {
@@ -81,16 +78,19 @@ namespace MusicPlayer.UI.ViewModels
             Task.Run(() =>
             {
                 string[] picList = Directory.GetFiles(sourceDir, "*.mp3");
-                foreach (string f in picList)
+                 foreach (string f in picList)
                 {
                     string fName = f.Substring(sourceDir.Length + 1);
-                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine("D:\\Music_for_project", fName), true);
-                    Meda_data_analys("D:\\Music_for_project\\" + fName, fName);
+                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine("C:\\Users\\Kolotyuk\\Desktop\\song", fName), true);
+                    Meda_data_analys("C:\\Users\\Kolotyuk\\Desktop\\song\\" + fName,fName);
                 }
             });
         }
         public void Select_directory_for_scan_music()
         {
+            LoadAllArtists();
+            LoadAllCategorys();
+            LoadAllAlboms();
             string sourceDir = null;
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = @"C:\Users";
