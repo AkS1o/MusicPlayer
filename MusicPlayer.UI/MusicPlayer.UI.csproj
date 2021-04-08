@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\MenuModel.cs" />
     <Compile Include="PageAutorization.xaml.cs">
       <DependentUpon>PageAutorization.xaml</DependentUpon>
     </Compile>

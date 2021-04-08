@@ -32,6 +32,54 @@
         <Button Grid.Column="0" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
         <!--<Button Grid.Column="5" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheRegistrationWindow}" Content="registration"></Button>
         <Button Grid.Column="4" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheAutorizationWindow}" Content="Login"></Button>-->
+
+        <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2">
+            <Button DockPanel.Dock="Top" Content="Home" FontSize="18" FontWeight="SemiBold" Command="{Binding LoadMenuCmd}"/>
+
+            <!--MainMenu-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.MenuItems}" SelectedItem="{Binding uilistViewModel.SelectedMenuItem, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadSubMenuCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--SubMenu-->
+
+            <!--Artist-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Artists}" SelectedItem="{Binding uilistViewModel.SelectedArtist, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadArtistTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--Album-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Albums}" SelectedItem="{Binding uilistViewModel.SelectedAlbum, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadAlbumTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--Category-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Categorys}" SelectedItem="{Binding uilistViewModel.SelectedCategory, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadCategoryTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+
         <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15" >
             <Border CornerRadius="10" Background="#FF2D2D30" Margin="6" >
             <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="{x:Null}">
