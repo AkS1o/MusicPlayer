@@ -28,6 +28,23 @@ namespace MusicPlayer.UI.ViewModels
 
         public ICommand LoadTracksCmd => loadTracksCmd;
 
+        private Command loadMenuCmd;
+        public ICommand LoadMenuCmd => loadMenuCmd;
+
+        private Command loadSubMenuCmd;
+        public ICommand LoadSubMenuCmd => loadSubMenuCmd;
+
+
+        private Command loadArtistTracksCmd;
+        public ICommand LoadArtistTracksCmd => loadArtistTracksCmd;
+
+        private Command loadAlbumTracksCmd;
+        public ICommand LoadAlbumTracksCmd => loadAlbumTracksCmd;
+
+        private Command loadCategoryTracksCmd;
+        public ICommand LoadCategoryTracksCmd => loadCategoryTracksCmd;
+
+
         private Command openTheRegistrationWindow;
         public ICommand OpenTheRegistrationWindow => openTheRegistrationWindow;
 
@@ -63,8 +80,14 @@ namespace MusicPlayer.UI.ViewModels
 
         public MainViewModel()
         {
-            
             loadTracksCmd = new DelegateCommand(uilistViewModel.LoadAllTracks);
+            loadMenuCmd = new DelegateCommand(uilistViewModel.LoadMenu);
+            loadSubMenuCmd = new DelegateCommand(uilistViewModel.LoadSubMenu);
+
+            loadArtistTracksCmd = new DelegateCommand(uilistViewModel.LoadArtistTrack);
+            loadAlbumTracksCmd = new DelegateCommand(uilistViewModel.LoadAlbumTrack);
+            loadCategoryTracksCmd = new DelegateCommand(uilistViewModel.LoadCategoryTrack);
+
             select_dir_for_scan = new DelegateCommand(workWithAudoiFilesViewModel.Select_directory_for_scan_music);
             openTheRegistrationWindow = new DelegateCommand(registrationViewModel.OpenTheRegistrationWindow);
             wayToPictureCommand = new DelegateCommand(registrationViewModel.SelectDirectoryForwayToPicture);
