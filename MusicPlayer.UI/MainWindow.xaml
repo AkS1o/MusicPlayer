@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MusicPlayer.UI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
             Title="MainWindow"  Height="1000" Width="1200" MinHeight="1000" MinWidth="1200">
-    <Grid>
+    <Grid Background="#FF383838">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -30,45 +30,62 @@
             </Frame.Background>
         </Frame>
         <Button Grid.Column="0" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
-        <Button Grid.Column="5" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheRegistrationWindow}" Content="registration"></Button>
-        <Button Grid.Column="4" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheAutorizationWindow}" Content="Login"></Button>
+        <!--<Button Grid.Column="5" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheRegistrationWindow}" Content="registration"></Button>
+        <Button Grid.Column="4" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheAutorizationWindow}" Content="Login"></Button>-->
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15" >
+            <Border CornerRadius="10" Background="#FF2D2D30" Margin="6" >
+            <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate >
+                        <DockPanel LastChildFill="False">
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding CategoryName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                            <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                            <Button Content="..." FontSize="18" DockPanel.Dock="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <Button Content="Menu item 1" />
+                                        <Button Content="Menu item 2" />
+                                        <Button Content="Menu item 3 " />
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                        </DockPanel>
 
-        <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="#FF6E6C6C">
-            <ListBox.ItemTemplate>
-                <DataTemplate >
-                    <DockPanel LastChildFill="False">
-                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding CategoryName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                        <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Border Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" CornerRadius="10" Background="Purple" Margin="15">
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        </Border>
+        <Border Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15">
 
             <Grid Margin="5,5"  Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4">
-                <Border  Grid.Row="1" CornerRadius="10" Background="Black"/>
-                <Button Command="{Binding StartOverSong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF" HorizontalAlignment="Left" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="10" Background="Black" Grid.ColumnSpan="2"/>
+                <Button Command="{Binding StartOverSong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF" HorizontalAlignment="Left" Margin="10,29,0,29" Grid.ColumnSpan="2">
                     <materialDesign:PackIcon Kind="RotateRight" VerticalAlignment="Center" Width="30" Height="30">
 
                     </materialDesign:PackIcon>
                 </Button>
 
-                <Button Command="{Binding OnesongBack}" x:Name="Anterior" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="50,0" >
-                    <materialDesign:PackIcon Kind="ChevronLeft" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
+                <Button Command="{Binding OnesongBack}" x:Name="Anterior" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="15,29,0,29" Grid.Column="1" >
+                    <materialDesign:PackIcon Kind="ChevronLeft" VerticalAlignment="Center" Width="30" Height="30"  Foreground="#DDFFFFFF"></materialDesign:PackIcon>
                 </Button>
-
-                <Button Command="{Binding Playmusic}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="#00000000" BorderBrush="#708B00FF" HorizontalAlignment="Center" Foreground="#DD8000FF">
+                <Label MaxWidth="300"  Content="{Binding playingMusicModel.MusicName,Mode=TwoWay}" FontSize="20" Height="30"  Background="{x:Null}" BorderBrush="#708B00FF" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DD8000FF" Grid.Column="1" Margin="50,35,0,39"/>
+                <Button Command="{Binding Playmusic}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF" HorizontalAlignment="Center" Foreground="#DD8000FF" Grid.Column="1">
                     <Button.Effect>
                         <DropShadowEffect  RenderingBias="Quality" BlurRadius="40" Direction="0"/>
                     </Button.Effect>
                     <materialDesign:PackIcon Kind="Pause" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
                 </Button>
 
-                <Button Command="{Binding OnesongAhead}" x:Name="Proxima" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" Margin="50,0" >
+                <Button Command="{Binding OnesongAhead}" x:Name="Proxima" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" Margin="0,29,50,29" Foreground="#DDFFFFFF" Grid.Column="1" >
                     <materialDesign:PackIcon Kind="ChevronRight" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
                 </Button>
-                <Button Command="{Binding Randomsong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF"  HorizontalAlignment="Right"  Margin="10">
+                <Button Command="{Binding Randomsong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF"  HorizontalAlignment="Right"  Margin="0,29,10,29" Grid.Column="1">
                     <materialDesign:PackIcon Kind="ShuffleVariant" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
                 </Button>
             </Grid>

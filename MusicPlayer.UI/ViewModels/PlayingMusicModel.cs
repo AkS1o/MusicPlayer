@@ -24,8 +24,9 @@ namespace MusicPlayer.UI.ViewModels
             if (selectedTrack != null && Isplayingmusic != selectedTrack.Name) { Isplay = true; }
             if (Isplay)
             {
+                MusicName = selectedTrack.Name;
                 if (selectedTrack != null && Isplayingmusic != selectedTrack.Name)
-                {
+                {              
                     mediaElement.Source = new Uri($"C:\\Users\\Kolotyuk\\Desktop\\song\\{selectedTrack.Name}.mp3", UriKind.Absolute);
                     Isplayingmusic = selectedTrack.Name;
                 }
@@ -56,6 +57,9 @@ namespace MusicPlayer.UI.ViewModels
             get { return selectedTrack; }
             set { SetProperty(ref selectedTrack, value); }
         }
+
+        private string musicName;
+        public string MusicName { get => musicName; set => SetProperty(ref musicName, value); }
 
         private int selectedTrackindex;
         public int SelectedTrackindex { get => selectedTrackindex; set => SetProperty(ref selectedTrackindex, value); }
@@ -94,6 +98,7 @@ namespace MusicPlayer.UI.ViewModels
             SelectedTrackindex = IndexMusic;
             PlayMusic();
         }
+
 
     }
 }

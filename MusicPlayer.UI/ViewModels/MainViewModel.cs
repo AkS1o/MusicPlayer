@@ -24,6 +24,7 @@ namespace MusicPlayer.UI.ViewModels
         public UIListViewModel uilistViewModel { get; } = new UIListViewModel();
         public RegistrationViewModel registrationViewModel { get; } = new RegistrationViewModel();
         public AutorizationViewModel autorizationViewModel { get; } = new AutorizationViewModel();
+        public PlayingMusicModel playingMusicModel { get; } = new PlayingMusicModel();
 
         public ICommand LoadTracksCmd => loadTracksCmd;
 
@@ -45,6 +46,21 @@ namespace MusicPlayer.UI.ViewModels
         private Command loginUserCommand;
         public ICommand LoginUserCommand => loginUserCommand;
 
+        private Command playmusic;
+        public ICommand Playmusic => playmusic;
+
+        private Command startOverSong;
+        public ICommand StartOverSong => startOverSong;
+
+        private Command onesongAhead;
+        public ICommand OnesongAhead => onesongAhead;
+
+        private Command onesongBack;
+        public ICommand OnesongBack => onesongBack;
+
+        private Command randomsong;
+        public ICommand Randomsong => randomsong;
+
         public MainViewModel()
         {
             
@@ -56,6 +72,11 @@ namespace MusicPlayer.UI.ViewModels
             addUserCommand = new DelegateCommand(registrationViewModel.СreatingAUser);
             openTheAutorizationWindow = new DelegateCommand(registrationViewModel.OpenTheAutorizationWindow);
             loginUserCommand = new DelegateCommand(autorizationViewModel.LoginUser);
+            playmusic = new DelegateCommand(playingMusicModel.PlayMusic);
+            startOverSong = new DelegateCommand(playingMusicModel.StartOverSong);
+            onesongAhead = new DelegateCommand(playingMusicModel.OnesongAhead);
+            onesongBack = new DelegateCommand(playingMusicModel.OnesongBack);
+            randomsong = new DelegateCommand(playingMusicModel.Randomsong);
         }
 
       
