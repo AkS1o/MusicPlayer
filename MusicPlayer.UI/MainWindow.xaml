@@ -29,7 +29,7 @@
                 <ImageBrush/>
             </Frame.Background>
         </Frame>
-        <Button Grid.Column="0" Grid.Row="0" Margin="5" Command="{Binding Path=Select_dir_for_scan}">Open directory for scan</Button>
+        <Button Grid.Column="1" Grid.Row="6" Margin="3,16" Command="{Binding Path=Select_dir_for_scan}" VerticalAlignment="Bottom" Content="Open for scan"></Button>
         <!--<Button Grid.Column="5" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheRegistrationWindow}" Content="registration"></Button>
         <Button Grid.Column="4" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheAutorizationWindow}" Content="Login"></Button>-->
 
@@ -82,28 +82,30 @@
 
         <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15" >
             <Border CornerRadius="10" Background="#FF2D2D30" Margin="6" >
-            <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="{x:Null}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate >
-                        <DockPanel LastChildFill="False">
-                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
-                            <TextBlock Text="{Binding CategoryName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                            <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                            <Button Content="..." FontSize="18" DockPanel.Dock="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                                <Button.ContextMenu>
-                                    <ContextMenu>
-                                        <Button Content="Menu item 1" />
-                                        <Button Content="Menu item 2" />
-                                        <Button Content="Menu item 3 " />
-                                    </ContextMenu>
-                                </Button.ContextMenu>
-                            </Button>
-                        </DockPanel>
+                <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="{x:Null}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+                            <DockPanel LastChildFill="False">
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                                <TextBlock Text="{Binding Category.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Artist.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Album.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <Button Content="···" FontSize="18" DockPanel.Dock="Right" >
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <Button Content="Menu item 1" />
+                                            <Button Content="Menu item 2" />
+                                            <Button Content="Menu item 3 " />
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </DockPanel>
 
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
         </Border>
         <Border Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15">
 
@@ -138,7 +140,7 @@
                 </Button>
             </Grid>
         </Border>
-        <MediaElement Name="mediael" Grid.Column="1" Grid.Row="6" Source="{Binding playingMusicModel.MediaElement.Source}" RenderTransformOrigin="0.5,0.877" LoadedBehavior="{Binding playingMusicModel.MediaElement.LoadedBehavior}" />
-        <Button Content="Load tracks" Grid.Column="0" Grid.Row="6" Command="{Binding LoadTracksCmd}"></Button>
+        <MediaElement Name="mediael" Grid.Column="3" Grid.Row="0"  Source="{Binding playingMusicModel.MediaElement.Source}" RenderTransformOrigin="0.5,0.877" LoadedBehavior="{Binding playingMusicModel.MediaElement.LoadedBehavior}" />
+        <Button Content="Load tracks" Grid.Column="0" Grid.Row="6" Margin="3,16" Command="{Binding LoadTracksCmd}" VerticalAlignment="Bottom"></Button>
     </Grid>
 </Window>

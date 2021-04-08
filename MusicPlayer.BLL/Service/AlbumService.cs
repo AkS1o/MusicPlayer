@@ -28,6 +28,7 @@ namespace MusicPlayer.BLL.Service
                     cfg.CreateMap<Artist, ArtistDTO>();
                     cfg.CreateMap<Сategory, СategoryDTO>();
                     cfg.CreateMap<Track, TrackDTO>();
+                    cfg.CreateMap<Сategory, СategoryDTO>();
 
                     // DTO to Entity
                     cfg.CreateMap<AlbumDTO, Album>();
