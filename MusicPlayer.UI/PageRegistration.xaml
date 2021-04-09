@@ -1,0 +1,129 @@
+﻿<Page x:Class="MusicPlayer.UI.PageRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MusicPlayer.UI" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"  
+      Title="PageRegistration">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type TextBox }">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Opacity" Value="0.3" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="{x:Type PasswordBox }">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Opacity" Value="0.3" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+
+    </Page.Resources>
+    <Grid Opacity="0.95" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Image 
+        Source="Assets\Logo3.png"
+         Width="200" Height="200" HorizontalAlignment="Center" Stretch="Uniform" ></Image>
+        </StackPanel>
+
+        <Border Grid.Row="1" CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF1C2026" Offset="0.0"/>
+                    <GradientStop Color="#FF052372" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Center" FontSize="30"  Opacity="1"  Text="Create your account"></TextBlock>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="email address"/>
+                <TextBox BorderBrush="{Binding Path=registrationViewModel.BorderEmail.BorderBrush,Mode=TwoWay}" Text="{Binding Path=registrationViewModel.UserDTO.Email,Mode=TwoWay}"  Grid.Column="1" VerticalContentAlignment="Center"/>
+                <iconPacks:PackIconMaterial Grid.Column="2" Kind="Email" Foreground="White"  HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="5"/>
+            </Grid>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Name"/>
+                <TextBox BorderBrush="{Binding Path=registrationViewModel.BorderName.BorderBrush,Mode=TwoWay}" Text="{Binding Path=registrationViewModel.UserDTO.Name,Mode=OneWayToSource}" Grid.Column="1" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,18,1,18" />
+                <iconPacks:PackIconMaterial Grid.Column="2" Kind="Account" Foreground="White"  HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="5"/>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Password"/>
+                <TextBox BorderBrush="{Binding Path=registrationViewModel.Borderpasword.BorderBrush,Mode=TwoWay}"  Text="{Binding Path=registrationViewModel.UserDTO.Password,Mode=OneWayToSource}" Grid.Column="1" VerticalContentAlignment="Center" />
+                <iconPacks:PackIconMaterial Grid.Column="2" Kind="FormTextboxPassword" Foreground="White"  HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Way To Songs"/>
+                <TextBox BorderBrush="{Binding Path=registrationViewModel.BorderWayToSongs.BorderBrush,Mode=TwoWay}" Text="{Binding Path=registrationViewModel.MusicPath,Mode=TwoWay}" Grid.Column="1" IsEnabled="False" VerticalContentAlignment="Center" />
+                <iconPacks:PackIconMaterial Grid.Column="2" Kind="Folder" Foreground="White"  HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="3"/>
+                <Button Command="{Binding WayToMusicCommand}" Grid.Column="3" Width="80" Content="Сhoose" HorizontalAlignment="Left" Margin="10"></Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="1" Source="{Binding Path=registrationViewModel.Picture,Mode=TwoWay}"  Width="70" Height="70"></Image>
+                <iconPacks:PackIconMaterial Grid.Column="2" Kind="Image" Foreground="White"  HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="3"/>
+                <Button Command="{Binding WayToPictureCommand}"  Grid.Column="3" Width="80" Content="Сhoose" HorizontalAlignment="Left"></Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding AddUserCommand}" Grid.Column="1" Width="110" Content="Sign Up" HorizontalAlignment="Center" Margin="20"></Button>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,146 @@
+﻿<Window x:Class="MusicPlayer.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicPlayer.UI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+            Title="MainWindow"  Height="1000" Width="1200" MinHeight="1000" MinWidth="1200">
+    <Grid Background="#FF383838">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Frame Name="loginFrame" Content ="{Binding registrationViewModel.LoginFrame, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="7" Grid.ColumnSpan="2">
+            <Frame.Background>
+                <ImageBrush/>
+            </Frame.Background>
+        </Frame>
+        <Button Grid.Column="1" Grid.Row="6" Margin="3,16" Command="{Binding Path=Select_dir_for_scan}" VerticalAlignment="Bottom" Content="Open for scan"></Button>
+        <!--<Button Grid.Column="5" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheRegistrationWindow}" Content="registration"></Button>
+        <Button Grid.Column="4" Grid.Row="0" Margin="5" Command="{Binding Path=OpenTheAutorizationWindow}" Content="Login"></Button>-->
+
+        <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2">
+            <Button DockPanel.Dock="Top" Content="Home" FontSize="18" FontWeight="SemiBold" Command="{Binding LoadMenuCmd}"/>
+
+            <!--MainMenu-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.MenuItems}" SelectedItem="{Binding uilistViewModel.SelectedMenuItem, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadSubMenuCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--SubMenu-->
+
+            <!--Artist-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Artists}" SelectedItem="{Binding uilistViewModel.SelectedArtist, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadArtistTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--Album-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Albums}" SelectedItem="{Binding uilistViewModel.SelectedAlbum, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadAlbumTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--Category-->
+            <ListBox DockPanel.Dock="Top"
+                ItemsSource="{Binding uilistViewModel.Categorys}" SelectedItem="{Binding uilistViewModel.SelectedCategory, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button FontSize="18" FontWeight="SemiBold"
+                                Content="{Binding Name}" Command="{Binding DataContext.LoadCategoryTracksCmd, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15" >
+            <Border CornerRadius="10" Background="#FF2D2D30" Margin="6" >
+                <ListBox x:Name="ListBoxMusic" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding uilistViewModel.Tracks}" SelectedItem="{Binding playingMusicModel.SelectedTrack, Mode=TwoWay}" SelectedIndex="{Binding playingMusicModel.SelectedTrackindex, Mode=TwoWay}" Background="{x:Null}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+                            <DockPanel LastChildFill="False">
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                                <TextBlock Text="{Binding Category.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Artist.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Album.Name}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding Duration}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                                <Button Content="···" FontSize="18" DockPanel.Dock="Right" >
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <Button Content="Menu item 1" />
+                                            <Button Content="Menu item 2" />
+                                            <Button Content="Menu item 3 " />
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </DockPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </Border>
+        <Border Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" CornerRadius="10" Background="#FF673AB7" Margin="15">
+
+            <Grid Margin="5,5"  Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="10" Background="Black" Grid.ColumnSpan="2"/>
+                <Button Command="{Binding StartOverSong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF" HorizontalAlignment="Left" Margin="10,29,0,29" Grid.ColumnSpan="2">
+                    <materialDesign:PackIcon Kind="RotateRight" VerticalAlignment="Center" Width="30" Height="30">
+
+                    </materialDesign:PackIcon>
+                </Button>
+
+                <Button Command="{Binding OnesongBack}" x:Name="Anterior" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="15,29,0,29" Grid.Column="1" >
+                    <materialDesign:PackIcon Kind="ChevronLeft" VerticalAlignment="Center" Width="30" Height="30"  Foreground="#DDFFFFFF"></materialDesign:PackIcon>
+                </Button>
+                <Label MaxWidth="300"  Content="{Binding playingMusicModel.MusicName,Mode=TwoWay}" FontSize="20" Height="30"  Background="{x:Null}" BorderBrush="#708B00FF" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DD8000FF" Grid.Column="1" Margin="50,35,0,39"/>
+                <Button Command="{Binding Playmusic}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF" HorizontalAlignment="Center" Foreground="#DD8000FF" Grid.Column="1">
+                    <Button.Effect>
+                        <DropShadowEffect  RenderingBias="Quality" BlurRadius="40" Direction="0"/>
+                    </Button.Effect>
+                    <materialDesign:PackIcon Kind="Pause" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
+                </Button>
+
+                <Button Command="{Binding OnesongAhead}" x:Name="Proxima" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" Margin="0,29,50,29" Foreground="#DDFFFFFF" Grid.Column="1" >
+                    <materialDesign:PackIcon Kind="ChevronRight" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
+                </Button>
+                <Button Command="{Binding Randomsong}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="#708B00FF"  Foreground="#DD8000FF"  HorizontalAlignment="Right"  Margin="0,29,10,29" Grid.Column="1">
+                    <materialDesign:PackIcon Kind="ShuffleVariant" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
+                </Button>
+            </Grid>
+        </Border>
+        <MediaElement Name="mediael" Grid.Column="3" Grid.Row="0"  Source="{Binding playingMusicModel.MediaElement.Source}" RenderTransformOrigin="0.5,0.877" LoadedBehavior="{Binding playingMusicModel.MediaElement.LoadedBehavior}" />
+        <Button Content="Load tracks" Grid.Column="0" Grid.Row="6" Margin="3,16" Command="{Binding LoadTracksCmd}" VerticalAlignment="Bottom"></Button>
+    </Grid>
+</Window>
